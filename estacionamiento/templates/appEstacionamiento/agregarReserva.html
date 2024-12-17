@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/estiloAgregarReserva.css' %}">
+    <title>Agregar Reserva</title>
+</head>
+<body class="container mt-5">
+    <div class="alert alert-info display-1 text-center">AGREGAR RESERVA</div>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                
+                {% if field.errors %}
+                    <div class="text-danger">
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <input type="submit" value="AGREGAR RESERVA" class="btn btn-info">
+    </form>
+
+    <a href="{% url 'listadoReservas' %}" class="btn btn-secondary mt-5">Volver al Listado de Reservas</a>
+</body>
+</html>
