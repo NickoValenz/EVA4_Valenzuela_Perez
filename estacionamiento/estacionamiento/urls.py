@@ -35,6 +35,6 @@ urlpatterns = [
     path('actualizarReserva/<int:id>/', views.actualizarReserva, name='actualizarReserva'),
     path('eliminarReserva/<int:id>/', views.eliminarReserva, name='eliminarReserva'),
 
-    path('', include('appEstacionamiento.urls')),  # Rutas de tu app principal
-    path('', include('api.urls')),  # Rutas de la nueva API
+    path('', include('appEstacionamiento.urls')),  #rutas app principal
+    path('', include('api.urls')),  #rutas API
 ]
